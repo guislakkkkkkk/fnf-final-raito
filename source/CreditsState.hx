@@ -116,8 +116,9 @@ class CreditsState extends MusicBeatState
 			['Legomar Game'],
 			['Legomar Game', 'Legomar Game', 'Legomar Game', 'https://twitter.com/legomarnanet', '0xFFAFF9FF'],
 			[''],
-			['cara o port lol']
-			['Guislakkkk', 'gui', 'a', 'https://youtube.com/channel/UCVniqkS8csFDi8U2N6UrVhQ', 'FE0015'],
+			['Cara q fez o port lol'],
+			['Guislakkkk',	'gui',				'a',					'https://youtube.com/channel/UCVniqkS8csFDi8U2N6UrVhQ', 	'FE0015'],
+			[''],
 			['Psych Engine Team'],
 			['Shadow Mario',		'shadowmario',		'Main Programmer of Psych Engine',								'https://twitter.com/Shadow_Mario_',	'444444'],
 			['RiverOaken',			'river',			'Main Artist/Animator of Psych Engine',							'https://twitter.com/RiverOaken',		'B42F71'],
