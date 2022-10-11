@@ -101,7 +101,7 @@ class CreditsState extends MusicBeatState
 			['Arten', 'arten', 'Artist', 'https://twitter.com/Artenkk', '0xFFb08861'],
 			['Hari', 'hari', 'Artist', 'https://twitter.com/n3harise', '0xFFb08861'],
 			['Rene Chavoso', 'rene chavoso', 'Artist', 'https://twitter.com/ReneChavoso', '0xFFb08861'],
-			['OSimuns', 'simus', 'BG Artist', 'https://twitter.com/OSimuns', 0xFFb08861''],
+			['OSimuns', 'simus', 'BG Artist', 'https://twitter.com/OSimuns', '0xFFb08861'],
 			['Yoga', 'yoga', 'BG Artist', 'https://twitter.com/popbyoga', '0xFFb08861'],
 			['MrShurico', 'shurico', 'Animator', 'https://twitter.com/MrSanico207', '0xFFb08861'],
 			['Universo506', 'universo', 'Animator', 'https://twitter.com/Unizitoo', '0xFFb08861'],
