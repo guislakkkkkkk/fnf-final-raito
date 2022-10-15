@@ -868,37 +868,19 @@ class PlayState extends MusicBeatState
 		#if LUA_ALLOWED
 		var doPush:Bool = false;
 
-		if(openfl.utils.Assets.exists("assets/scripts/" + "script.lua"))
+		if(openfl.utils.Assets.exists("assets/scripts/" + ".lua"))
 		{
-			var path = Paths.luaAsset("scripts/" + "script");
+			var path = Paths.luaAsset("scripts/" + ".lua");
 			var luaFile = openfl.Assets.getBytes(path);
 
 			FileSystem.createDirectory(Main.path + "assets/scripts");
 			FileSystem.createDirectory(Main.path + "assets/scripts/");
 			
-			File.saveBytes(Paths.lua("scripts/" + "script"), luaFile);
+			File.saveBytes(Paths.lua("scripts/" + ".lua"), luaFile);
 			doPush = true;
 		}
 		if(doPush)
-			luaArray.push(new FunkinLua(Paths.lua("scripts/" + "script")));
-		#end //thx random
-
-		#if LUA_ALLOWED
-		var doPush:Bool = false;
-
-		if(openfl.utils.Assets.exists("assets/scripts/" + "script1.lua"))
-		{
-			var path = Paths.luaAsset("scripts/" + "script1");
-			var luaFile = openfl.Assets.getBytes(path);
-
-			FileSystem.createDirectory(Main.path + "assets/scripts");
-			FileSystem.createDirectory(Main.path + "assets/scripts/");
-			
-			File.saveBytes(Paths.lua("scripts/" + "script1"), luaFile);
-			doPush = true;
-		}
-		if(doPush)
-			luaArray.push(new FunkinLua(Paths.lua("scripts/" + "script1")));
+			luaArray.push(new FunkinLua(Paths.lua("scripts/" + ".lua")));
 		#end //thx random
 
 		// STAGE SCRIPTS
@@ -1212,19 +1194,7 @@ class PlayState extends MusicBeatState
 		// SONG SPECIFIC SCRIPTS
     #if (LUA_ALLOWED)
 		var doPush:Bool = false;
-		var luaFile:String = 'data/' + Paths.formatToSongPath(SONG.song) + '/script.lua';
-			luaFile = Paths.getPreloadPath(luaFile);
-			if(OpenFlAssets.exists(luaFile)) {
-				doPush = true;
-			}
-		
-		if(doPush) 
-			luaArray.push(new FunkinLua(Asset2File.getPath(luaFile)));
-		#end
-
-    #if (LUA_ALLOWED)
-		var doPush:Bool = false;
-		var luaFile:String = 'data/' + Paths.formatToSongPath(SONG.song) + '/script1.lua';
+		var luaFile:String = 'data/' + Paths.formatToSongPath(SONG.song) + '/.lua';
 			luaFile = Paths.getPreloadPath(luaFile);
 			if(OpenFlAssets.exists(luaFile)) {
 				doPush = true;
