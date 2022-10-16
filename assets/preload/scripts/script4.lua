@@ -1,42 +1,53 @@
-function onCreatePost()
-	setProperty('scoreTxt.visible', false);
-	setProperty('timeBarBG.visible', false);
-	setProperty('timeBar.visible', true);
-	setTextFont('timeTxt', 'Arial.ttf');
+local songNameSysten = false;
+local author = 'Hundred'
+function onCreate()
+	if songNameSysten then
+		if songName == 'Counter-Ratio' then
+			author = 'LazyBudd'
+		elseif songName == 'final-Ratio' then
+			author = 'Hundred ft. Nasa'
+		elseif songName == 'legomar-game' then
+			author = 'DudaBu'
+		end
+		-- setProperty('skipCountdown',true)
+		makeLuaSprite('blck','',0,0);
+		makeGraphic('blck',1280,720,'000000')
+		setObjectCamera('blck','other')
+		addLuaSprite('blck',false);
+		makeLuaSprite('startS','startscreens/'..dadName,1000,0);
+		setObjectCamera('startS','other')
+		addLuaSprite('startS',false);
+		
+		makeLuaText('songNametxt',songName,-3,-700,250);
+		setTextFont('songNametxt','NiseSegaSonic.ttf');
+		setObjectCamera('songNametxt','other');
+		setTextSize('songNametxt',100);
+		addLuaText('songNametxt');
 
-	makeLuaSprite('ytb', 'youtube', 0, 0);
-	setObjectCamera('ytb', 'other');
-	addLuaSprite('ytb', false);
-
-	--setProperty('timeBar.y', 695);
-	scaleObject('timeBar', 3.2, 0.6)
-	setObjectCamera('timeBar','other')
-	screenCenter('timeBar')
-	setProperty('timeBar.y', 680);
-
-	
-	setProperty('timeTxt.y', 695);
-	setProperty('timeTxt.x', 54);
-	scaleObject('timeTxt', 0.5, 0.5);
-	setObjectCamera('timeTxt','other')
-	setTextColor('timeTxt', 'D0D0D0')
+		makeLuaText('author','by: '..author,-3,-700,350);
+		setTextFont('author','NiseSegaSonic.ttf');
+		setObjectCamera('author','other');
+		setTextSize('author',50);
+		addLuaText('author');
+	end
 end
 
-function onUpdate()
-	--[[
-	makeLuaSprite('timeBarFC', '', 0, 710);
-	makeGraphic('timeBarFC', 1280, 10, '424145');
-	setObjectCamera('timeBarFC','other')
-	addLuaSprite('timeBarFC', false);
+function onCountdownTick(counter)
+	if counter == 0 then
+		runTimer('startS', 1.1)
+		doTweenX('startS', 'startS', 0, 0.5, 'linear')
+		doTweenX('songNametxt', 'songNametxt', 160, 0.5, 'linear')
+		doTweenX('author', 'author', 250, 0.5, 'linear')
+	end
+end
 
-	makeLuaSprite('timeBarFD', '', 0, 710);
-	makeGraphic('timeBarFD', curStep, 10, '908F91');
-	setObjectCamera('timeBarFD','other')
-	addLuaSprite('timeBarFD', false);
-
-	makeLuaSprite('timeBarF', '', 0, 710);
-	makeGraphic('timeBarF', curStep/ 1.2, 10, 'FF0000');
-	setObjectCamera('timeBarF','other')
-	addLuaSprite('timeBarF', false);
-	]]
+function onTimerCompleted(tag, loops, loopsLeft)
+	if songNameSysten then
+		if tag == 'startS' then
+			doTweenAlpha('alpha', 'blck', 0, 0.5, 'linear')
+			doTweenAlpha('alpha1', 'startS', 0, 0.5, 'linear')
+			doTweenAlpha('alpha2', 'songNametxt', 0, 0.5, 'linear')
+			doTweenAlpha('alpha3', 'author', 0, 0.5, 'linear')
+		end
+	end
 end

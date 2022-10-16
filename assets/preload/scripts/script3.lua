@@ -1,53 +1,25 @@
-local songNameSysten = false;
-local author = 'Hundred'
-function onCreate()
-	if songNameSysten then
-		if songName == 'Counter-Ratio' then
-			author = 'LazyBudd'
-		elseif songName == 'final-Ratio' then
-			author = 'Hundred ft. Nasa'
-		elseif songName == 'legomar-game' then
-			author = 'DudaBu'
-		end
-		-- setProperty('skipCountdown',true)
-		makeLuaSprite('blck','',0,0);
-		makeGraphic('blck',1280,720,'000000')
-		setObjectCamera('blck','other')
-		addLuaSprite('blck',false);
-		makeLuaSprite('startS','startscreens/'..dadName,1000,0);
-		setObjectCamera('startS','other')
-		addLuaSprite('startS',false);
-		
-		makeLuaText('songNametxt',songName,-3,-700,250);
-		setTextFont('songNametxt','NiseSegaSonic.ttf');
-		setObjectCamera('songNametxt','other');
-		setTextSize('songNametxt',100);
-		addLuaText('songNametxt');
+function onUpdate()
+    local score = 'SCORE: ' .. getProperty('songScore');
+    local miss = '\nMISSES: ' .. getProperty('songMisses');
+    local rating = '\nRATING: ' .. getProperty('ratingName');
+    local ratingP = math.floor(getProperty('ratingPercent')* 100);
+    local ratingFC = getProperty('ratingFC');
 
-		makeLuaText('author','by: '..author,-3,-700,350);
-		setTextFont('author','NiseSegaSonic.ttf');
-		setObjectCamera('author','other');
-		setTextSize('author',50);
-		addLuaText('author');
-	end
+    local acc = {score, miss, rating, '\n('..ratingP.. '%)', ' - ' .. ratingFC};
+
+    -- criando font
+    makeLuaText('acc', acc[1] .. acc[2] .. acc[3] .. acc[4] .. acc[5],
+                getProperty('scoreTxt.width'), getProperty('scoreTxt.x'),
+                getProperty('scoreTxt.y') - 250);
+    setTextSize('acc', 40);
+    setObjectCamera('acc', 'other');
+    setTextAlignment('acc', 'left');
+    setObjectOrder('acc', getObjectOrder('scoreTxt'));
+    setTextWidth('acc', getProperty('scoreTxt.width'));
+    setTextFont('acc', 'Sonic Advanced 2.ttf');
+    addLuaText('acc');
+
+	setObjectOrder('acc', 0)
 end
 
-function onCountdownTick(counter)
-	if counter == 0 then
-		runTimer('startS', 1.1)
-		doTweenX('startS', 'startS', 0, 0.5, 'linear')
-		doTweenX('songNametxt', 'songNametxt', 160, 0.5, 'linear')
-		doTweenX('author', 'author', 250, 0.5, 'linear')
-	end
-end
-
-function onTimerCompleted(tag, loops, loopsLeft)
-	if songNameSysten then
-		if tag == 'startS' then
-			doTweenAlpha('alpha', 'blck', 0, 0.5, 'linear')
-			doTweenAlpha('alpha1', 'startS', 0, 0.5, 'linear')
-			doTweenAlpha('alpha2', 'songNametxt', 0, 0.5, 'linear')
-			doTweenAlpha('alpha3', 'author', 0, 0.5, 'linear')
-		end
-	end
-end
+function goodNoteHit() end

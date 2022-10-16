@@ -1,37 +1,17 @@
-credits = 'nao terminados lol'
-anim = 'quartInOut'
-CreditsStep = 1
-CreditsTimer = 5
+local camada = 'camHUD';
+local accuarcesystem = true;
 function onCreate()
-	addLuaScript('data/'..songName..'/credits');
-	
-	makeLuaSprite('blacbar', 'credits/box', 1280/2 -208, -800)
-	setProperty('blacbar.scale.x', 1.42)
-	setObjectCamera('blacbar', 'other')
-	addLuaSprite('blacbar', false)
+	makeLuaSprite('bartop','',0,0);
+    makeGraphic('bartop',1280,100,'000000');
+    setObjectCamera('bartop', camada);
 
+    makeLuaSprite('barbot','',0,620);
+    makeGraphic('barbot',1280,100,'000000');
+    setObjectCamera('barbot', camada);
 
-	makeLuaText('creditsTXT', 'CREDITS', 200, 1280/2 -110, 200 -900)
-	setTextSize('creditsTXT', 25)
-	setTextBorder('creditsTXT', 2, '000000')
-	setObjectCamera('creditsTXT', 'other')
-	setTextFont('creditsTXT', 'arcadepi.ttf')
-	addLuaText('creditsTXT')
-end
+    setObjectOrder('barbot',2)
+    setObjectOrder('bartop',2)
 
-function onSongStart()
-    runTimer('starts', CreditsTimer-3);
-end
-
-function onTimerCompleted(tag)
-	if tag == 'starts' then
-		doTweenY('blacbar', 'blacbar', 0, 0.8, 'circInOut')
-		doTweenY('creditsTXT', 'creditsTXT', 100, 0.8, 'circInOut')
-		runTimer('off', CreditsTimer)
-    end
-
-    if tag == 'off' then
-		doTweenY('blacbar', 'blacbar', -800, 0.8, 'circInOut')
-		doTweenY('creditsTXT', 'creditsTXT', 200 -900, 0.8, 'circInOut')    
-	end
+    addLuaSprite('bartop', false);
+    addLuaSprite('barbot', false);
 end

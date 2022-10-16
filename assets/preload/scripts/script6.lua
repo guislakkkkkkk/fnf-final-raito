@@ -1,25 +1,42 @@
-function onUpdate()
-    local score = 'SCORE: ' .. getProperty('songScore');
-    local miss = '\nMISSES: ' .. getProperty('songMisses');
-    local rating = '\nRATING: ' .. getProperty('ratingName');
-    local ratingP = math.floor(getProperty('ratingPercent')* 100);
-    local ratingFC = getProperty('ratingFC');
+function onCreatePost()
+	setProperty('scoreTxt.visible', false);
+	setProperty('timeBarBG.visible', false);
+	setProperty('timeBar.visible', true);
+	setTextFont('timeTxt', 'Arial.ttf');
 
-    local acc = {score, miss, rating, '\n('..ratingP.. '%)', ' - ' .. ratingFC};
+	makeLuaSprite('ytb', 'youtube', 0, 0);
+	setObjectCamera('ytb', 'other');
+	addLuaSprite('ytb', false);
 
-    -- criando font
-    makeLuaText('acc', acc[1] .. acc[2] .. acc[3] .. acc[4] .. acc[5],
-                getProperty('scoreTxt.width'), getProperty('scoreTxt.x'),
-                getProperty('scoreTxt.y') - 250);
-    setTextSize('acc', 40);
-    setObjectCamera('acc', 'other');
-    setTextAlignment('acc', 'left');
-    setObjectOrder('acc', getObjectOrder('scoreTxt'));
-    setTextWidth('acc', getProperty('scoreTxt.width'));
-    setTextFont('acc', 'Sonic Advanced 2.ttf');
-    addLuaText('acc');
+	--setProperty('timeBar.y', 695);
+	scaleObject('timeBar', 3.2, 0.6)
+	setObjectCamera('timeBar','other')
+	screenCenter('timeBar')
+	setProperty('timeBar.y', 680);
 
-	setObjectOrder('acc', 0)
+	
+	setProperty('timeTxt.y', 695);
+	setProperty('timeTxt.x', 54);
+	scaleObject('timeTxt', 0.5, 0.5);
+	setObjectCamera('timeTxt','other')
+	setTextColor('timeTxt', 'D0D0D0')
 end
 
-function goodNoteHit() end
+function onUpdate()
+	--[[
+	makeLuaSprite('timeBarFC', '', 0, 710);
+	makeGraphic('timeBarFC', 1280, 10, '424145');
+	setObjectCamera('timeBarFC','other')
+	addLuaSprite('timeBarFC', false);
+
+	makeLuaSprite('timeBarFD', '', 0, 710);
+	makeGraphic('timeBarFD', curStep, 10, '908F91');
+	setObjectCamera('timeBarFD','other')
+	addLuaSprite('timeBarFD', false);
+
+	makeLuaSprite('timeBarF', '', 0, 710);
+	makeGraphic('timeBarF', curStep/ 1.2, 10, 'FF0000');
+	setObjectCamera('timeBarF','other')
+	addLuaSprite('timeBarF', false);
+	]]
+end
